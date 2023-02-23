@@ -68,25 +68,25 @@ const array2 = ['z', 'y', 'a'];
 
 //O(a+b)
 
-function containsCommonItem2(arr1, arr2) {
-  let map = {};
-  for (let i = 0; i < arr1.length; i++) {
-    if (!map[array1[i]]) {
-      const item = array1[i];
-      map[item] = true;
-    }
-  }
-  //console.log(map)
-  //returns Object {a: true, b: true, c: true, x: true}
-  // loop through 2nd arraound and check if item in second array exists on created object.
-  //}
-  for (let j = 0; j < arr2.length; j++) {
-    if (map[array2[j]]) {
-      return true;
-    }
-  }
-  return false
-}
+// function containsCommonItem2(arr1, arr2) {
+//   let map = {};
+//   for (let i = 0; i < arr1.length; i++) {
+//     if (!map[array1[i]]) {
+//       const item = array1[i];
+//       map[item] = true;
+//     }
+//   }
+//console.log(map)
+//returns Object {a: true, b: true, c: true, x: true}
+// loop through 2nd arraound and check if item in second array exists on created object.
+//}
+//   for (let j = 0; j < arr2.length; j++) {
+//     if (map[array2[j]]) {
+//       return true;
+//     }
+//   }
+//   return false
+// }
 
 //console.log(containsCommonItem2(array1, array2))
 
@@ -110,24 +110,71 @@ function containsCommonItem2(arr1, arr2) {
 
 //14. Tell interviewer how you would improve code. 
 //Specific methods to clean up code depending on language can use built in JS methods to clean up code:
-function containsCommonItem3(arr1, arr2) {
-  return arr1.some(item => arr2.includes(item))
-}
+// function containsCommonItem3(arr1, arr2) {
+//   return arr1.some(item => arr2.includes(item))
+// }
 
-console.log(containsCommonItem3(array1, array2))
+// console.log(containsCommonItem3(array1, array2))
 
 //15. Interviewer may ask what if too large?
 //For containsCommonItem
-  //O(a*b) - Time complexity
-  //O(1) - Space Complexity
+//O(a*b) - Time complexity
+//O(1) - Space Complexity
 
 //For the containsCommonItem2
-  //O(a+b) - Time Complexity
-  //O(a) Space Complexity - Increased space complexity
+//O(a+b) - Time Complexity
+//O(a) Space Complexity - Increased space complexity
 
 //For the containsCommonItem2
-  //O(a+b) - Time Complexity
-  //)(a) Space Complexity
+//O(a+b) - Time Complexity
+//)(a) Space Complexity
 
 //9. Modularize code - chunk it up or break it up if need to.
 
+//Question twosums:
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+// You can return the answer in any order.
+// nums = [2, 7, 11, 15], target = 9
+
+// var twoSum = function(nums, target) {
+//   //iterate through the array to get i and j
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[i] + nums[j] == target) {
+//         console.log[i, j]
+//       }
+//     }
+
+//   }
+// }
+//time complexity =  O(n^2)
+//space complexity = O(1) 
+
+//Can have a time complexity = O(n)
+//Space complexity = O(n) 
+//if use a Hashmap
+
+//same nums array above
+nums = [2, 7, 11, 15], target = 9
+// map = { 2:0, 7:1, 11:2, 15:3, }
+// i = 0
+// value = 1
+// complementPair = 10-1 = 9
+
+var twoSum = function(nums, target) {
+  var map = {};
+  for (let i = 0; i < nums.length; i++) {
+      let value = nums[i];
+      let complementPair = target - value;
+      if (map [complementPair] !== undefined) {
+        console.log([map[complementPair], i]);
+        return [map[complementPair], i];
+      } else {
+        map[value] = i;
+        console.log(map[value])
+      }
+  }
+}
