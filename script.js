@@ -47,8 +47,8 @@
 //Big O(a*b) - Time Complexity
 //O(1) - Space Complexity
 
-const array1 = ['a', 'b', 'c', 'x'];
-const array2 = ['z', 'y', 'a'];
+// const array1 = ['a', 'b', 'c', 'x'];
+// const array2 = ['z', 'y', 'a'];
 
 //array1 ==> obj {
 //a: true, 
@@ -158,23 +158,45 @@ const array2 = ['z', 'y', 'a'];
 //if use a Hashmap
 
 //same nums array above
-nums = [2, 7, 11, 15], target = 9
-// map = { 2:0, 7:1, 11:2, 15:3, }
-// i = 0
-// value = 1
-// complementPair = 10-1 = 9
+// nums = [2, 7, 11, 15], target = 9
+// // map = { 2:0, 7:1, 11:2, 15:3, }
+// // i = 0
+// // value = 1
+// // complementPair = 10-1 = 9
 
-var twoSum = function(nums, target) {
-  var map = {};
-  for (let i = 0; i < nums.length; i++) {
-      let value = nums[i];
-      let complementPair = target - value;
-      if (map [complementPair] !== undefined) {
-        console.log([map[complementPair], i]);
-        return [map[complementPair], i];
-      } else {
-        map[value] = i;
-        console.log(map[value])
-      }
+// var twoSum = function(nums, target) {
+//   var map = {};
+//   for (let i = 0; i < nums.length; i++) {
+//       let value = nums[i];
+//       let complementPair = target - value;
+//       if (map [complementPair] !== undefined) {
+//         console.log([map[complementPair], i]);
+//         return [map[complementPair], i];
+//       } else {
+//         map[value] = i;
+//         console.log(map[value])
+//       }
+//   }
+// }
+
+
+//Interview Q's Leet code 53
+
+//Given an Integer array nums, find the contiguous subarray(containing atleast one number) which has the largest sum and return its sum
+
+//brute force iterate through each number of array and sum
+
+let numsArray = [-2,1,-3,4,-1,2,1,-5,4];
+
+//accumulating method - should I continue to accumulate or just start fresh?
+
+function maxSubArray(nums) {
+  let solution = numsArray[0]
+  for(let i = 1; i < numsArray.length; i++) {
+    numsArray[i] = Math.max(numsArray[i], numsArray[i] + numsArray[i - 1]);
+    solution = Math.max(solution, numsArray[i])
   }
+  return solution
 }
+
+console.log(maxSubArray())
